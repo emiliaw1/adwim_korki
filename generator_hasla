@@ -1,0 +1,37 @@
+var male = "abcdefghijklmnoprstuwyz";
+var duze = "ABCDEFGHIJKLMNOPRSTUWYZ";
+var diactritic = "ąęłńóśżźĄĘŁŃÓŚŻŹ";
+var special = "!@#$%^&*()_+";
+var digits = "0123456789";
+var rand  = new Random();
+Console.WriteLine("Wygenerowane hasła: ");
+for (int j = 0; j < 5; j++)
+{
+    List<char> haslo = new List<char>();
+    for (int i = 0; i < 3; i++)
+    {
+        haslo.Add(male[rand.Next(0, male.Length)]);
+
+
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        haslo.Add(duze[rand.Next(0, duze.Length)]);
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        haslo.Add(diactritic[rand.Next(0, diactritic.Length)]);
+
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        haslo.Add(special[rand.Next(0, special.Length)]);
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        haslo.Add(digits[rand.Next(0, digits.Length)]);
+    }
+    var hasloText = String.Join("", haslo.Shuffle());
+    Console.WriteLine($" - {hasloText}");
+}
