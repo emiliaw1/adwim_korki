@@ -1,0 +1,68 @@
+elo.cs
+    
+using ConsoleApp1;
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
+using System.Text;
+
+namespace ConsoleApp1
+{
+    static class Elo
+    {
+        public static int LiczSamogloski(string tekst)
+        {
+            int liczbaSamoglosek = 0;
+            if (String.IsNullOrEmpty(tekst))
+            {
+                return 0;
+            }
+            string samogloski = "aąeęiouóyAĄEĘIOUÓY";
+            for (int i = 0; i < tekst.Length; i++)
+            {
+                for (int j = 0; j < samogloski.Length; j++)
+                {
+                    if (tekst[i] == samogloski[j])
+                    {
+                        liczbaSamoglosek++;
+                    }
+
+                }
+            }
+            return liczbaSamoglosek;
+        }
+        public static string bezPowtorzen(string tekst)
+        {
+            
+            if (String.IsNullOrEmpty(tekst))
+            {
+                return "";
+            }
+            string poprawiony = "";
+            for (int i = 0; i < tekst.Length-1; i++)
+            {
+                
+                    if (tekst[i] != tekst[i+1])
+                    {
+                        poprawiony += tekst[i];
+                    }
+
+                
+            }
+            if (tekst[tekst.Length - 1] != tekst[tekst.Length - 2])
+            {
+                poprawiony += tekst[tekst.Length - 1];
+            }
+            return poprawiony;
+        }
+    }
+}
+
+
+
+
+Program.cs
+
+using ConsoleApp1;
+Console.WriteLine(Elo.LiczSamogloski("Abba;;; to zespół"));
+Console.WriteLine(Elo.bezPowtorzen("Abba;;; to zespół"));
